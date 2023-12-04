@@ -1,6 +1,6 @@
 
 //COMPONENTES
-import NavBarComponent from './components/NavBarComponent';
+import NavBarComponent from './components/NavBarComponent/NavBarComponent';
 import ItemListContainer from './components/ItemListContainer';
 
 
@@ -16,14 +16,9 @@ import './App.scss'
 function App() {
 
   return (
-    <div style={{width:'100vw', height:'100vh'}}>
-      <div>
+    <div style={{width:'100vw', height:'100vh'}}>      
       <NavBarComponent />
-      </div>
-      <div>
-      <ItemListContainer greeting='Bienvenidos al e-commerce de' empresa='Beds & Dreams'/>
-      </div>
-
+      <ItemListContainer greeting='Bienvenidos al E-Commerce de' empresa='Beds & Dreams'/>
     </div>
   );
   }
