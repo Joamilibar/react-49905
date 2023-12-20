@@ -5,12 +5,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
+import {useCategory} from "../../hooks/useCategory";
+import { items } from '../../json/datos';
 
-function NavScrollExample() {
+const NavbarComponent = () => {
+
+const {category} = useCategory();
+    
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
-                <Navbar.Brand href="#">Beds&Dreams</Navbar.Brand>
+                <Link to='/'>Beds & Dreams</Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -18,19 +24,24 @@ function NavScrollExample() {
                         style={{ maxHeight: '100p' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Inicio</Nav.Link>
-                        <Nav.Link href="#action2">¿Quiénes Somos?</Nav.Link>
-                        <Nav.Link href="#action3">Tienda Online</Nav.Link>
-                        <Nav.Link href="#action4">Hoteles</Nav.Link>
-                        <Nav.Link href="#action5">Contácto</Nav.Link>
+                        <Nav.Link href="#inicio">Inicio</Nav.Link>
+                        <Nav.Link href="#quienes-somos">¿Quiénes Somos?</Nav.Link>
+                        <Nav.Link href="#tienda-online">Tienda Online</Nav.Link>
+                        <Nav.Link href="#hoteles">Hoteles</Nav.Link>
+                        <Nav.Link href="#contacto">Contácto</Nav.Link>
                         <NavDropdown title="Categorías" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action6">Cama</NavDropdown.Item>
-                            <NavDropdown.Item href="#action7">
-                                Baño
-                            </NavDropdown.Item>
+                            {items.map((item, index) => {
+                                return (
+                                    <NavDropdown.Item key={index}>
+                                        <Link to={`/items/${item}`}>{items.categoria}</Link>
+                                    </NavDropdown.Item>
+                                )
+                            })}
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action8">
+                            <Link to='/'>
                                 Ir a la Tienda
+                            </Link>                                
                             </NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="#action9" >
@@ -50,7 +61,7 @@ function NavScrollExample() {
             </Container>
         </Navbar>
     );
-}
+};
 
-export default NavScrollExample;
+export default NavbarComponent;
 
