@@ -1,4 +1,4 @@
-import { Index } from '../pages/Index'
+import { Index } from '../pages'
 import { ItemDetailContainer } from '../pages/ItemDetailContainer'
 import { Category } from '../pages/Category'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
