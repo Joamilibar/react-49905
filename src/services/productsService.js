@@ -1,6 +1,7 @@
 import axios from "axios";
 import { items } from "../json/datos";
 
+
 /**
  * @description Local JSON
  * @param {number} limit
@@ -19,5 +20,5 @@ export async function getProductById(id) {
 
 export async function getProductByCategory(categoria) {
     console.log(categoria)
-    return items.find(item => item.categoria === categoria);
+    return items.filter(item => item.categoria == categoria);
 }

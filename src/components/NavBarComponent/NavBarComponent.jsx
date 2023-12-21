@@ -7,9 +7,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
 import { useCategory } from '../../hooks/useCategory';
+import { categorias } from '../../json/categories';
 
 const NavbarComponent = () => {
-    const categorias =  [{categoria: "Cama"}, {categoria: "Baño"}, {categoria: "Complemento"}];
+const {category} = useCategory();
+    /* const categorias =  [{categoria: "Cama"}, {categoria: "Baño"}, {categoria: "Complemento"}]; */
     
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -29,6 +31,7 @@ const NavbarComponent = () => {
                         <Nav.Link href="#contacto">Contácto</Nav.Link>
                         <NavDropdown title="Categorías" id="navbarScrollingDropdown">
                             {categorias.map((cat, index) => {
+                                console.log(cat)
                                 return (
                                     <NavDropdown.Item key={index}>
                                         <Link to={`/category/${cat.categoria}`}>{cat.categoria}</Link>
