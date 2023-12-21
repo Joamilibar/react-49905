@@ -1,9 +1,8 @@
-import { Index } from '../pages'
+import { Index } from '../pages/Index'
 import { ItemDetailContainer } from '../pages/ItemDetailContainer'
 import { Category } from '../pages/Category'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavbarComponent from '../components/NavBarComponent/NavBarComponent'
-import { items } from '../json/datos'
 
 
 export const MainRouter = () => {

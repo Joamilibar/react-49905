@@ -1,23 +1,23 @@
 import axios from "axios";
-import { items  } from "../json/datos";
+import { items } from "../json/datos";
 
 /**
- * @description Get products from dummyjson API
+ * @description Local JSON
  * @param {number} limit
  * @returns {Promise}
  */
 
 export async function getProducts(limit) {
     console.log(limit)
-    return (`../json/productsData.js${limit}`);
+    return (items);
 }
 
 export async function getProductById(id) {
     console.log(id)
-    return (`../json/productsData.js${id}`); 
+    return items.find( item => item.id === Number(id) ); 
 }
 
 export async function getProductByCategory(categoria) {
     console.log(categoria)
-    return (`../json/productsData.js${categoria}`);
+    return items.find(item => item.categoria === categoria);
 }

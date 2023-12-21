@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCategories } from "../services";
-import { items } from "../json/datos";
+
 
 
 export const useCategory = () => {
@@ -8,7 +8,7 @@ export const useCategory = () => {
     
     useEffect(() => {
       getCategories()
-      .then((res) => setCategory(res.data))
+      .then((res) => setCategory(res))
       .catch((err) => console.log(err));
     }, []);
     

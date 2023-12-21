@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getProducts, getProductById, getProductByCategory } from "../services";
-import { items } from "../json/datos";
+
 
 
 
@@ -12,7 +12,7 @@ export const useGetProducts = (limit) => {
     useEffect(() => {
         getProducts(limit)
             .then((response) => {
-                setProductsData(response.data)
+                setProductsData(response)
             })
             .catch((error) => {
                 console.log(error);
@@ -32,7 +32,7 @@ export const useGetProductById = (id) => {
     useEffect(() => {
         getProductById(id)
             .then((response) => {
-                setProductData(response.data)
+                setProductData(response)
             })
             .catch((error) => {
                 console.log(error);
@@ -52,7 +52,7 @@ export const useGetProductByCategory = (category) => {
     useEffect(() => {
         getProductByCategory(category)
             .then((response) => {
-                setProductsData(response.data.items)
+                setProductsData(response)
             })
             .catch((error) => {
                 console.log(error);
