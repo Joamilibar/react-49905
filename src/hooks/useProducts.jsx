@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import { getProducts, getProductById, getProductByCategory } from "../services";
-
-
-
+import { getProducts, getProductById, getProductBySlug, getProductByCategory } from "../services";
 
 export const useGetProducts = (limit) => {
     const [productsData, setProductsData] = useState([]);
@@ -19,7 +16,7 @@ export const useGetProducts = (limit) => {
                 setError(error);
                 setLoading(false);
             });
-    }, []);
+    }, [limit]);
 
     return { productsData, loading, error }
 }
@@ -40,6 +37,26 @@ export const useGetProductById = (id) => {
                 setLoading(false);
             });
     }, [id]);
+
+    return { productData, loading, error }
+}
+
+export const useGetProductBySlug = (slug) => {
+    const [productData, setProductData] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        getProductBySlug(slug)
+            .then((response) => {
+                setProductData(response)
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(error);
+                setLoading(false);
+            });
+    }, [slug]);
 
     return { productData, loading, error }
 }

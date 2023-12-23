@@ -1,3 +1,8 @@
+// Los nombres de los archivos úsalos en formato cammelCase
+// Ejemplo: index.jsx, itemDetailContainer.jsx ...
+// Si notas, comienzan siempre en mayúsculas
+// En servicios si están bien
+
 import { Index } from '../pages'
 import { ItemDetailContainer } from '../pages/ItemDetailContainer'
 import { Category } from '../pages/Category'

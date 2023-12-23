@@ -1,11 +1,21 @@
-export const categorias =  [
+// Siempre es mejor usar nombres de variables o constantes o clases
+// en inglés cómo estándares internacionales. Es bueno acostumbrase a eso
+// desde el inicio.
+
+const baseUrl = '/category'
+
+export const categories =  [
     {
-        "categoria": "Cama"
+        category: 'Camas',
+        link: `${ baseUrl}/beds`,
     }, 
     {
-        "categoria": "Baño"
+        category: 'Baños',
+        link: `${ baseUrl}/bathrooms`,
+        
     }, 
     {
-        "categoria": "Complemento"
+        category: 'Complementos',
+        link: `${ baseUrl}/complements`,
     }
 ];

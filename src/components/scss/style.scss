@@ -1,3 +1,7 @@
+// LA ESTRUCTURA DE CARPETAS NO DEBERÍA TENER LOS ESTILOS DENTRO DE
+// LOS COMPONENTES, DEBE ESTAR MÁS BIEN EN ASSETS O DIRECTAMENTE EN SRC
+
+
 @import "./base/reset";
 @import "./base/typo";
 @import "./components/bootstrap";
@@ -34,3 +38,5 @@
 @import "./layout/media-q/media-425px";
 @import "./layout/media-q/media-375px";
 @import "./layout/media-q/media-320px";
+
+// CREAR ARCHIVO scss/components/navbar.scss

@@ -5,59 +5,78 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
-import { Link } from 'react-router-dom';
-import { useCategory } from '../../hooks/useCategory';
-import { categorias } from '../../json/categories';
+// import { Link } from 'react-router-dom';
+// import { useCategory } from '../../hooks/useCategory';
+// Siempre es mejor usar nombres de variables o constantes o clases
+// en inglés cómo estándares internacionales. Es bueno acostumbrase a eso
+// desde el inicio.
+import { categories } from '../../json/categories';
 
 const NavbarComponent = () => {
-const {category} = useCategory();
-    /* const categorias =  [{categoria: "Cama"}, {categoria: "Baño"}, {categoria: "Complemento"}]; */
-    
+    // La constante category nunca se usa, si es así
+    // es mejor eliminar o comentar (Reglas de Linter)
+    // const {category} = useCategory();
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        // REVISAR por qué el navbar no se minimiza en un menú de hamburguesa en pantallas móviles
+        // Por UX siempre es mejor usar navbar fixed on top!
+        <Navbar collapseOnSelect className="bg-body-tertiary justify-content-between" fixed="top">
             <Container fluid>
-                <Link to='/'>Beds & Dreams</Link>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100p' }}
-                        navbarScroll
-                    >
-                        <Nav.Link href="#inicio">Inicio</Nav.Link>
-                        <Nav.Link href="#quienes-somos">¿Quiénes Somos?</Nav.Link>
-                        <Nav.Link href="#tienda-online">Tienda Online</Nav.Link>
-                        <Nav.Link href="#hoteles">Hoteles</Nav.Link>
-                        <Nav.Link href="#contacto">Contácto</Nav.Link>
-                        <NavDropdown title="Categorías" id="navbarScrollingDropdown">
-                            {categorias.map((cat, index) => {
-                                console.log(cat)
-                                return (
-                                    <NavDropdown.Item key={index}>
-                                        <Link to={`/category/${cat.categoria}`}>{cat.categoria}</Link>
-                                    </NavDropdown.Item>
-                                )
-                            })}
+                <Navbar.Brand href="/">Beds & Dreams</Navbar.Brand>
+                {/* 
+                    ¿Por qué Link en vez de Brand? ¿Por el color? Usar estilos para mejorar el Brand
+                    pero es mejor usar los componentes que ya trae para eso dentro del Navbar
+                 */}
+                {/* <Link to='/'>Beds & Dreams</Link> */}
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto my-2 my-lg-0">
+                        <Nav.Link href="/home">Inicio</Nav.Link>
+                        <Nav.Link href="/about-us">¿Quienes somos?</Nav.Link>
+                        <Nav.Link href="/">Tienda online</Nav.Link>
+                        <Nav.Link href="/hotels">Hoteles</Nav.Link>
+                        {/* Contacto no lleva acento, es grave y termina en vocal XD */}
+                        <Nav.Link href="/contact">Contacto</Nav.Link> 
+                        <NavDropdown title="Categorías" id="collapsible-nav-dropdown">
+                            {
+                                categories.map((cat, index) => {
+                                    const { category, link } = cat
+                                    return (
+                                        /* 
+                                            Siempre es mejor usar nombres en inglés,
+                                            además, los enlaces deben estar siempre en minúsculas
+                                            y sin caracteres especiales. Además, es mejor
+                                            usar mejor el objeto de categorías
+                                        */
+                                       /**
+                                        * Nav.Link NavDropdown.Item ya genera una etiqueta <a></a>
+                                        * al momento de compilar, por lo que si se agrega otra link
+                                        * dentro queda <a><a></a></a> lo que genera el error:
+                                        * "<a> cannot appear as a descendant of <a>."
+                                        */
+                                        <NavDropdown.Item key={index} href={link}>{ category }</NavDropdown.Item>
+                                    )
+                                })
+                            }
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action8">
-                            <Link to='/'>
-                                Ir a la Tienda
-                            </Link>                                
-                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/">Ir a la tienda</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#action9" >
+                    </Nav>
+                    {/* El carrito siempre va del lado derecho y no cómo un elemento del navbar */}
+                    <Nav>
+                        <Form className="d-flex">
+                            {/* aria-label son parámetros de accesibilidad, usarlos en minúsculas y sin caracteres especiales */}
+                            <Form.Control
+                                type="search"
+                                placeholder="Buscar"
+                                className="me-2"
+                                aria-label="buscar"
+                            />
+                            <Button variant="outline-success">Buscar</Button>
+                        </Form>
+                        <Nav.Link href="#cart" >
                             <CartWidget />
                         </Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
-                        <Form.Control
-                            type="search"
-                            placeholder="Buscar"
-                            className="me-2"
-                            aria-label="Buscar"
-                        />
-                        <Button variant="outline-success">Buscar</Button>
-                    </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

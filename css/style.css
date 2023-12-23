@@ -1,4 +1,26 @@
 @charset "UTF-8";
+
+/* 
+  Debes organizar mejor la estructura de carpetas,
+  este estilo no debería estar acá sino dentro de source,
+  además, es un estilo que está pisando a otros estilos
+  (puedes verlo en el inspect).
+  Todos los estilos deben estar agrupados en una sola carpeta
+  y debes usar siempre scss o css, pero no mezclar.
+*/
+/*
+    Las llaves se abren y cierran en la misma linea vertical
+    Ejemplo:
+    {
+      data
+    }
+
+    Si se usa así, confunde a la vista porque no está claro dónde cierran:
+    {
+      data }
+    
+    OJO CON ESTO, revisa la clase navbar.
+   */
 * {
   margin: 0;
   padding: 0;
@@ -99,6 +121,7 @@ body {
 .logo img {
   max-height: 3.75rem; }
 
+  /* Agregué un padding acá */
 .navbar {
   display: flex;
   list-style: none;
@@ -106,7 +129,23 @@ body {
   font-size: 1.25rem;
   flex-direction: col;
   gap: 1.25rem;
-  row-gap: 1.25rem; }
+  row-gap: 1.25rem;
+  padding: 0.4em 1em !important;
+}
+
+.navbar-brand {
+  color: #3f62a2 !important;
+}
+
+/* Un poco de estilo al hover XD */
+.nav-link {
+  transition: all .35s ease;
+}
+
+.nav-link:hover {
+  color: #3f62a2 !important;
+}
+
   .navbar li a {
     text-decoration: none;
     color: #928450;
@@ -483,7 +522,8 @@ footer {
   .cards_footer_grid {
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: ".  col1   col2     ." ".  col3    col4    ."; }
+    grid-template-areas: ".  col1   col2     ."
+ ".  col3    col4    ."; }
   .cards_footer_grid div article {
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); } }
 
@@ -506,7 +546,8 @@ footer {
       height: min-content; }
     .nav .cards_footer_grid {
       grid-template-rows: repeat(2, 1fr);
-      grid-template-areas: ".  col1   col2     ." ".  col3    col4    ."; }
+      grid-template-areas: ".  col1   col2     ."
+ ".  col3    col4    ."; }
   div.descrip_quienes_somos {
     margin: 10%;
     padding: 0%; }
@@ -539,7 +580,10 @@ footer {
   .cards_footer_grid {
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(1, 1fr);
-    grid-template-areas: "col1" "col2" "col3" "col4"; } }
+    grid-template-areas: "col1"
+ "col2"
+ "col3"
+ "col4"; } }
 
 /* Mobile Responsive 320 (ANCHO) */
 @media (max-width: 320px) {
@@ -554,7 +598,10 @@ footer {
   .cards_footer_grid {
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(1, 1fr);
-    grid-template-areas: "col1" "col2" "col3" "col4"; }
+    grid-template-areas: "col1"
+ "col2"
+ "col3"
+ "col4"; }
   .video_intro {
     width: 18.75rem; }
   .hoteles article {
