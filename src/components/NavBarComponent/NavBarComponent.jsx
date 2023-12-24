@@ -31,6 +31,7 @@ const {category} = useCategory();
                         <Nav.Link href="#contacto">Contácto</Nav.Link>
                         <NavDropdown title="Categorías" id="navbarScrollingDropdown">
                             {categorias.map((cat, index) => {
+                                const categoria = cat.categoria
                                 console.log(cat)
                                 return (
                                     <NavDropdown.Item key={index}>

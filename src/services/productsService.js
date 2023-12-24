@@ -1,6 +1,6 @@
 import axios from "axios";
 import { items } from "../json/datos";
-import { categorias } from "../json/categories";
+
 
 /**
  * @description Local JSON
@@ -18,7 +18,7 @@ export async function getProductById(id) {
     return items.find( item => item.id === Number(id) ); 
 }
 
-export async function getProductByCategory(categoria) {
-    console.log(categoria)
-    return items.filter(item => item.categoria === categoria);
+export async function getProductByCategory(Category) {
+    console.log(Category)
+    return items.filter(item => item.categoria === Category);
 }
