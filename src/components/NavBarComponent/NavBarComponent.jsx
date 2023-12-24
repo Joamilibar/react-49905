@@ -42,7 +42,7 @@ const {category} = useCategory();
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action8">
                             <Link to='/'>
-                                Ir a la Tienda
+                                Todas las Categorias
                             </Link>                                
                             </NavDropdown.Item>
                         </NavDropdown>
