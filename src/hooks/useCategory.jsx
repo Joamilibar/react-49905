@@ -9,7 +9,7 @@ export const useCategory = () => {
     useEffect(() => {
       getCategories()
       .then((res) => setCategory(res))
-      .catch((err) => console.log(err));
+      .catch((err) => (err));
     }, []);
     
     return { category }

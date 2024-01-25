@@ -6,11 +6,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
+import { useGetCategories } from '../../hooks/useProducts';
 import { useCategory } from '../../hooks/useCategory';
 import { categorias } from '../../json/categories';
 
 const NavbarComponent = () => {
-const {category} = useCategory();
+const {category} = useGetCategories();
     /* const categorias =  [{categoria: "Cama"}, {categoria: "Baño"}, {categoria: "Complemento"}]; */
     
     return (
@@ -29,7 +30,7 @@ const {category} = useCategory();
                         <Nav.Link href="#tienda-online">Tienda Online</Nav.Link>
                         <Nav.Link href="#hoteles">Hoteles</Nav.Link>
                         <Nav.Link href="#contacto">Contácto</Nav.Link>
-                        <NavDropdown title="Categorías" id="navbarScrollingDropdown">
+                        <NavDropdown title="Categorías y Productos" id="navbarScrollingDropdown">
                             {categorias.map((cat, index) => {
                                 const categoria = cat.categoria
                                 console.log(cat)
@@ -43,14 +44,15 @@ const {category} = useCategory();
                             <NavDropdown.Item href="#action8">
                             <Link to='/'>
                                 Todas las Categorias
-                            </Link>                                
+                            </Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action10">
+                            <Link to='create-product'>Crear Nuevo Producto</Link>                                
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#action9" >
-                            <CartWidget />
-                        </Nav.Link>
+                        
                     </Nav>
-                    <Form className="d-flex">
+                    {/* <Form className="d-flex">
                         <Form.Control
                             type="search"
                             placeholder="Buscar"
@@ -58,8 +60,13 @@ const {category} = useCategory();
                             aria-label="Buscar"
                         />
                         <Button variant="outline-success">Buscar</Button>
-                    </Form>
+                    </Form> */}
                 </Navbar.Collapse>
+                <Nav.Link href="#action9" >
+                    <div>
+                        <CartWidget />
+                    </div>
+                        </Nav.Link>
             </Container>
         </Navbar>
     );

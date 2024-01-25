@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
-import { useGetProductByCategory } from "../hooks/useProducts";
+import { useGetCategories } from "../hooks/useProducts";
 import ItemListContainer from "../components/ItemListContainer";
+import { useGetProductByCategory } from "../hooks/useProducts";
 
 
 

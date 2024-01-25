@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
-import { useGetProducts } from '../hooks/useProducts';
 import ItemListContainer from '../components/ItemListContainer';
-import { items } from '../json/datos';
+import { useGetProducts } from '../hooks/useProducts';
+
+/* 
+import { items } from '../json/datos'; */
 
 
 export const Index = () => {
@@ -9,10 +11,10 @@ export const Index = () => {
     useEffect(() => {
         document.title = "Beds & Dreams - Home";
     })    
-        const {productsData} = useGetProducts(20);        
+        const {productsData} = useGetProducts('products');        
         
         return (
-            <ItemListContainer  productsData={items}/>
+            <ItemListContainer  productsData={productsData}/>
             )
         }
         

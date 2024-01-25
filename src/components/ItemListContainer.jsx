@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 // PROPS> SON AURGUMETNOS QUE SE PASAN AL COMPONENTE DESDE SU COMPONENTE PADRE
 
 const ItemListContainer = ({ productsData }) => {
-  console.log(productsData)
   return (
     
       <div className='tienda_prod'>
@@ -22,7 +21,8 @@ const ItemListContainer = ({ productsData }) => {
                 {products.descripcion}
               </Card.Text>
               <div>{products.precio}</div>
-              <Button variant="primary">Agregar</Button>
+              <Link key={products.id} to={`/item/${products.id}`}><Button variant="primary">Comprar</Button> </Link>
+              {/* <Button variant="primary">Agregar</Button> */}
             </Card.Body>
           </Card>
           );
