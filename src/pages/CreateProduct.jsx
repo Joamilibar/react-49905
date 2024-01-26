@@ -18,45 +18,52 @@ const CreateProduct = () => {
     const [stock, setStock] = useState(0);
     const [precio, setPrecio] = useState(0);
     const { categories } = useGetCategories();
-    
 
     const handleFieldReset = () => {
         setItem("");
         setDescripcion("");
         setImagen("");
-        setCategoria("");
+        setCategoria("Categorias...");
         setStock(0);
         setPrecio(0);
     }
 
+    const handleClick = () => {
+        const notify = () => toast("Wow so easy!");
+    };
+
     const handleCreateProduct = () => {
-        const data = {
-            item,
-            descripcion,
-            imagen,
-            categoria,
-            stock,
-            precio,
+
+        if (
+            item === "" ||
+            descripcion === "" ||
+            imagen === "" ||
+            categoria === "" ||
+            stock === "" ||
+            precio === ""
+        ) {
+            handleClick()
+            toast.warning("Todos los datos son obligatorios...");
+        } else {
+            const data = {
+                item,
+                descripcion,
+                imagen,
+                categoria,
+                stock,
+                precio,
+            }
+            const db = getFirestore();
+            const productsCollection = collection(db, 'products');
+            addDoc(productsCollection, data).then(({ id }) => { console.log(id) })
+            handleFieldReset();
+            handleClick()
+            toast.success('Producto creado con éxito!');            
         }
-        const db = getFirestore();
-
-        const productsCollection = collection(db, 'products');
-        addDoc(productsCollection, data).then(({ id }) => { console.log(id) })
-        
-       
-        
-        alert('Producto creado');
-        handleFieldReset();
-
     }
 
     return (
-
         <Form>
-
-
-
-
             <div className='cuerpo_tienda container'>
                 <h1>Crear Nuevo Producto</h1>
                 <div className='container'>
@@ -65,24 +72,17 @@ const CreateProduct = () => {
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Producto</Form.Label>
                             <Form.Control placeholder="Nombre del Producto" value={item} onChange={(e) => setItem(e.target.value)} />
-
                         </Form.Group>
-
-              
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Descripción</Form.Label>
                             <Form.Control placeholder="Descripción" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-
                         </Form.Group>
-
-             
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Imagen</Form.Label>
                             <Form.Control type='text' placeholder='Enlace de la Imagen' value={imagen} onChange={(e) => setImagen(e.target.value)} />
                         </Form.Group>
-                        
 
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Categorías</Form.Label>
@@ -96,24 +96,15 @@ const CreateProduct = () => {
                             </Form.Select>
                         </Form.Group>
 
-                        
-
-
-
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Stock</Form.Label>
                             <Form.Control type='number' placeholder="Stock" value={stock} onChange={(e) => setStock(e.target.value)} />
-
                         </Form.Group>
-
-                        
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Precio</Form.Label>
                             <Form.Control type='number' placeholder="Precio" value={precio} onChange={(e) => setPrecio(e.target.value)} />
                         </Form.Group>
-
-                        
 
                     </Form>
                 </div>
@@ -125,7 +116,6 @@ const CreateProduct = () => {
                     <ToastContainer />
                 </div>
 
-                
             </div>
         </Form>
     )
