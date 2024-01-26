@@ -7,7 +7,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
 import { useGetCategories } from '../../hooks/useProducts';
-import { useCategory } from '../../hooks/useCategory';
 import { categorias } from '../../json/categories';
 
 const NavbarComponent = () => {
@@ -33,7 +32,7 @@ const {category} = useGetCategories();
                         <NavDropdown title="Categorías y Productos" id="navbarScrollingDropdown">
                             {categorias.map((cat, index) => {
                                 const categoria = cat.categoria
-                                console.log(cat)
+                               
                                 return (
                                     <NavDropdown.Item key={index}>
                                         <Link to={`/category/${cat.categoria}`}>{cat.categoria}</Link>

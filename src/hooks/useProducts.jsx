@@ -83,3 +83,6 @@ export const useGetProductByCategory = (category) => {
 
     return { productsData, loading, error }
 }
+
+export const formatoNumero = (number) => 
+    new Intl.NumberFormat("ch-CL").format(number)

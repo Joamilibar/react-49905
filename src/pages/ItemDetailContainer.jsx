@@ -3,6 +3,7 @@ import { Button, CardImg } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useGetProductById } from "../hooks/useProducts";
 import ItemCount from "../components/ItemCount";
+import { formatoNumero } from "../hooks/useProducts";
 
 
 export const ItemDetailContainer = () => {
@@ -18,11 +19,9 @@ export const ItemDetailContainer = () => {
                 <Card.Body>
                     <Card.Title>{productData.item}</Card.Title>
                     <Card.Text>{productData.descripcion}</Card.Text>
-                        
-                    <div>{productData.precio}</div>
+
+                    <div>{formatoNumero(productData.precio)}</div>
                     <ItemCount productId={productData.id} />
-                    {/* 
-                    <Button variant="primary">Agregar</Button> */}
                 </Card.Body>
             </Card>
         </div>
