@@ -86,3 +86,5 @@ export const useGetProductByCategory = (category) => {
 
 export const formatoNumero = (number) => 
     new Intl.NumberFormat("ch-CL").format(number)
+
+    

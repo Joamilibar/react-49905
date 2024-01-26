@@ -5,6 +5,9 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Button } from 'react-bootstrap';
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const CreateProduct = () => {
@@ -15,6 +18,7 @@ const CreateProduct = () => {
     const [stock, setStock] = useState(0);
     const [precio, setPrecio] = useState(0);
     const { categories } = useGetCategories();
+    
 
     const handleFieldReset = () => {
         setItem("");
@@ -38,6 +42,9 @@ const CreateProduct = () => {
 
         const productsCollection = collection(db, 'products');
         addDoc(productsCollection, data).then(({ id }) => { console.log(id) })
+        
+       
+        
         alert('Producto creado');
         handleFieldReset();
 
@@ -61,9 +68,7 @@ const CreateProduct = () => {
 
                         </Form.Group>
 
-                        {/* <div>
-                    <input type="text" placeholder='item' value={item} onChange={(e) => setItem(e.target.value)} />
-                </div> */}
+              
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Descripción</Form.Label>
@@ -71,17 +76,13 @@ const CreateProduct = () => {
 
                         </Form.Group>
 
-                        {/* <div>
-                    <input type="text" placeholder='Desccripción' value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-                </div> */}
+             
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Imagen</Form.Label>
                             <Form.Control type='text' placeholder='Enlace de la Imagen' value={imagen} onChange={(e) => setImagen(e.target.value)} />
                         </Form.Group>
-                        {/* <div>
-                            <input type="text" placeholder='Imagen' value={imagen} onChange={(e) => setImagen(e.target.value)} />
-                        </div> */}
+                        
 
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Categorías</Form.Label>
@@ -95,13 +96,7 @@ const CreateProduct = () => {
                             </Form.Select>
                         </Form.Group>
 
-                        {/*  <select onChange={(e) => setCategoria(e.target.value)}>
-                                {categories.map((categoria, index) => (
-                                    <option key={index} value={categoria}>
-                                        {categoria}
-                                    </option>
-                                ))}
-                            </select> */}
+                        
 
 
 
@@ -111,18 +106,14 @@ const CreateProduct = () => {
 
                         </Form.Group>
 
-                        {/* <div>
-                            <input type="text" placeholder='Stock' value={stock} onChange={(e) => setStock(e.target.value)} />
-                        </div> */}
+                        
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Precio</Form.Label>
                             <Form.Control type='number' placeholder="Precio" value={precio} onChange={(e) => setPrecio(e.target.value)} />
                         </Form.Group>
 
-                        {/* <div>
-                            <input type="text" placeholder='Precio' value={precio} onChange={(e) => setPrecio(e.target.value)} />
-                        </div> */}
+                        
 
                     </Form>
                 </div>
@@ -131,11 +122,10 @@ const CreateProduct = () => {
                     <Button onClick={handleCreateProduct}>
                         Crear Producto
                     </Button>
+                    <ToastContainer />
                 </div>
 
-                {/* <div>
-                    <button onClick={handleCreateProduct}>Crear Producto</button>
-                </div> */}
+                
             </div>
         </Form>
     )
