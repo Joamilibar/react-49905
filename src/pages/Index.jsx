@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 import ItemListContainer from '../components/ItemListContainer';
 import { useGetProducts } from '../hooks/useProducts';
 
-/* 
-import { items } from '../json/datos'; */
+
 
 
 export const Index = () => {

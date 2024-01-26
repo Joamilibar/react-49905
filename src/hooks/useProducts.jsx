@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";/* 
-import { getProductById, getProductByCategory } from "../services"; */
+import { useState, useEffect } from "react";
 import { collection, getDocs, doc, getDoc, getFirestore } from "firebase/firestore";
 import { getProductByCategory } from "../services";
 

@@ -10,9 +10,9 @@ import { useGetCategories } from '../../hooks/useProducts';
 import { categorias } from '../../json/categories';
 
 const NavbarComponent = () => {
-const {category} = useGetCategories();
+    const { category } = useGetCategories();
     /* const categorias =  [{categoria: "Cama"}, {categoria: "Baño"}, {categoria: "Complemento"}]; */
-    
+
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
@@ -32,7 +32,6 @@ const {category} = useGetCategories();
                         <NavDropdown title="Categorías y Productos" id="navbarScrollingDropdown">
                             {categorias.map((cat, index) => {
                                 const categoria = cat.categoria
-                               
                                 return (
                                     <NavDropdown.Item key={index}>
                                         <Link to={`/category/${cat.categoria}`}>{cat.categoria}</Link>
@@ -41,15 +40,15 @@ const {category} = useGetCategories();
                             })}
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action8">
-                            <Link to='/'>
-                                Todas las Categorias
-                            </Link>
+                                <Link to='/'>
+                                    Todas las Categorias
+                                </Link>
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action10">
-                            <Link to='create-product'>Crear Nuevo Producto</Link>                                
+                                <Link to='create-product'>Crear Nuevo Producto</Link>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        
+
                     </Nav>
                     {/* <Form className="d-flex">
                         <Form.Control
@@ -65,7 +64,7 @@ const {category} = useGetCategories();
                     <div>
                         <CartWidget />
                     </div>
-                        </Nav.Link>
+                </Nav.Link>
             </Container>
         </Navbar>
     );
