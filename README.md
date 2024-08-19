@@ -1,9 +1,9 @@
 # Carrito de compras con React y Firebase (React + Vite)
 
 
-<p align="center">
-    <img alt="carrito-firebase" src="./assets/Carrito-React-Firebase.png">
-</p>
+
+    <img alt="carrito-firebase" src="./assets/carrito-react-firebase.png">
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
