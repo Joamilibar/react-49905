@@ -2,7 +2,7 @@
 
 
 <p align="center">
-    <img alt="carrito-firebase" src="./assets/carrito-react-firebase.png">
+    <img alt="carrito-firebase" src="./src/assets/carrito.png">
 </p>
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
